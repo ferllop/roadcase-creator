@@ -1,18 +1,19 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.Text
 Public Class Form1
-    <DllImport("user32.dll", EntryPoint:="GetWindowThreadProcessId")> _
+
+    <DllImport("user32.dll", EntryPoint:="GetWindowThreadProcessId")>
     Private Shared Function GetWindowThreadProcessId(<InAttribute()> ByVal hWnd As IntPtr, ByRef lpdwProcessId As Integer) As Integer
     End Function
     <DllImport("user32.dll", EntryPoint:="GetForegroundWindow")> Private Shared Function GetForegroundWindow() As IntPtr
     End Function
     <DllImport("user32.dll", SetLastError:=True, CharSet:=CharSet.Auto)> Private Shared Function GetWindowTextLength(ByVal hwnd As IntPtr) As Integer
     End Function
-    <DllImport("user32.dll", EntryPoint:="GetWindowTextW")> _
+    <DllImport("user32.dll", EntryPoint:="GetWindowTextW")>
     Private Shared Function GetWindowTextW(<InAttribute()> ByVal hWnd As IntPtr, <OutAttribute(), MarshalAs(UnmanagedType.LPWStr)> ByVal lpString As StringBuilder, ByVal nMaxCount As Integer) As Integer
     End Function
-    Dim codigoLote As String
-    Dim codigoLoteB As String
+    Dim codigoLote As String = ""
+    Dim codigoLoteB As String = ""
     Dim limiteDeLotes As Integer
     Dim errorRC As Boolean
     Dim focoRoadcaseOK As Boolean
@@ -167,7 +168,7 @@ Public Class Form1
                             Delay(0.2)
                             WarningWindow()
                             If paraloTodo And windowError Then
-                                Return False 'Return MsgBox("Algún suceso ha provocado que aparezca una ventana de información. Normalmente es porque algún componente del paquete que estás creando ya está en otro paquete" & vbNewLine & "Se ha detenido el proceso de creación de paquetes", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "¡¡¡Proceso detenido!!!")
+                                Return False
                                 Exit For
                             End If
                             Dim msg As String
@@ -186,21 +187,21 @@ Public Class Form1
                                 Else
                                     SendKeys.Send(okroadcase & "{Enter}")
                                     Delay(2)
-                                        SendKeys.Send(nuevoroadcase)
-                                    End If
-                                Else
-                                    Exit For
+                                    SendKeys.Send(nuevoroadcase)
                                 End If
                             Else
-                                SendKeys.Send(linea(i) & "{Enter}")
+                                Exit For
+                            End If
+                        Else
+                            SendKeys.Send(linea(i) & "{Enter}")
                             Delay(0.2)
                             WarningWindow()
                             If paraloTodo And windowError Then
-                                Return False 'Return MsgBox("Algún suceso ha provocado que aparezca una ventana de información. Normalmente es porque algún componente del paquete que estás creando ya está en otro paquete" & vbNewLine & "Se ha detenido el proceso de creación de paquetes", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "¡¡¡Proceso detenido!!!")
+                                Return False
                                 Exit For
                             End If
                         End If
-                        End If
+                    End If
                 End If
                 If linea(i).Contains(".RC") Then
                     lineaConRC = linea(i)
@@ -208,28 +209,22 @@ Public Class Form1
                 End If
 
             Next i
-            'Me.TopMost = True
-            'Return MessageBox.Show("El proceso ha terminado" & vbNewLine & "Incluyendo el que queda activo, los siguientes paquetes se han procesado:" & vbNewLine & roadcasesHechos)
             Return MsgBox("Incluyendo el que queda activo, los siguientes paquetes se han procesado:" & vbNewLine & roadcasesHechos & "Por favor repasa los paquetes hechos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "El proceso ha terminado")
         Else
-            'Return MessageBox.Show("No se ha creado ningún paquete")
             Return MsgBox("No se ha creado ningún paquete.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "El proceso ha terminado")
         End If
     End Function
     Function comprobacion()
 
-        'Dim codigos2 As String = TextBox1.Text
         Dim linea2 As String() = Split(TextBox1.Text, vbCrLf)
         Dim x As Integer = 0
         Dim y As Integer = 0
         errorRC = False
 
-
-        'codigos = TextBox1.Text
-        'linea = Split(codigos, vbCrLf)
         For x = 0 To UBound(linea2)
             If linea2(x).Contains(".RC") Then
-                If linea2(x).Contains(codigoLote) Or linea2(x).Contains(codigoLoteB) Then
+                If (codigoLote.Length > 0 And linea2(x).Contains(codigoLote)) Or
+                    (codigoLoteB.Length > 0 And linea2(x).Contains(codigoLoteB)) Then
                     y = y + 1
                 Else
                     errorRC = True
@@ -240,6 +235,7 @@ Public Class Form1
         If errorRC Then
             MessageBox.Show("Se ha encontrado algun paquete que no es de " & ComboBox1.SelectedItem & ". Revisa los códigos")
         End If
+
         If y > limiteDeLotes Then
             errorRC = True
             MessageBox.Show("No puedes hacer más de " & limiteDeLotes & " paquetes de golpe.")
@@ -271,6 +267,7 @@ Public Class Form1
             Dim absenPorPaquete As Integer = 6
             Dim loteOK As Boolean = True
             Dim mensajeFinal As String = ""
+
             If Not linea3(0).Contains(".RC") Then
                 mensajeFinal += "El primer código del paquete tiene que ser el de la caja" & vbNewLine & vbNewLine
                 loteOK = False
@@ -3048,7 +3045,7 @@ Public Class Form1
             End If
         End If
 
-        'BARRAS DE LED Z8
+        'BARRAS DE LED Z8.
         If ComboBox1.SelectedIndex = 30 Then
             codigoLote = "Z8"
             limiteDeLotes = 4
@@ -3244,25 +3241,6 @@ Public Class Form1
 
         End If
 
-
-
-        'SIN COMPROBACION
-        '  If ComboBox1.SelectedIndex = 999 Then
-        ' Dim errComp As String = ""
-        'Dim h As Integer = 0
-        'Dim p As Integer = 0
-        '
-        'Dim loteOK As Boolean = True
-        'Dim mensajeFinal As String = ""
-
-        'comprobacion()
-        'If errorRC = False And loteOK = True Then
-        'MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
-        'volcado()
-        'Else
-        'MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
-        'End If
-        'End If
 
 ErrorHandler:
         Resume Next
