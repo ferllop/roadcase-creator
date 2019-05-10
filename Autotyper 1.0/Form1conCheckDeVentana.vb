@@ -254,7 +254,7 @@ Public Class Form1
         linea3 = Split(codigos3, vbCrLf)
 
         'ABSEN A3
-        If ComboBox1.SelectedIndex = 0 Then
+        If ComboBox1.Text = "Absen (6)" Then
             codigoLote = "A3"
             limiteDeLotes = 6
             Dim errComp As String = ""
@@ -330,7 +330,7 @@ Public Class Form1
         End If
 
         'ABSEN BACK SUPPORT
-        If ComboBox1.SelectedIndex = 1 Then
+        If ComboBox1.Text = "Absen Back Support (6)" Then
             codigoLote = "A3BS"
             limiteDeLotes = 6
             Dim errComp As String = ""
@@ -416,7 +416,7 @@ Public Class Form1
         End If
 
         'ABSEN GROUND BEAM 2 x 1m + 1 x 1.5m
-        If ComboBox1.SelectedIndex = 2 Then
+        If ComboBox1.Text = "Absen Ground Beam 1 x 1.5m + 2 x 1m(4)" Then
             codigoLote = "A3GB1"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -514,7 +514,7 @@ Public Class Form1
         End If
 
         'ABSEN GROUND BEAM 2 x 2m
-        If ComboBox1.SelectedIndex = 3 Then
+        If ComboBox1.Text = "Absen Ground Beam 2 x 2m (4)" Then
             codigoLote = "A3GB2"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -600,7 +600,7 @@ Public Class Form1
         End If
 
         '24 DigiLED MCK7
-        If ComboBox1.SelectedIndex = 4 Then
+        If ComboBox1.Text = "24 x DigiLED MCK7 (4)" Then
             codigoLote = "24MC7"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -677,7 +677,7 @@ Public Class Form1
 
 
         'PROYECTOR 21K
-        If ComboBox1.SelectedIndex = 5 Then
+        If ComboBox1.Text = "21K (2)" Then
             codigoLote = "21K"
             limiteDeLotes = 2
             Dim errComp As String = ""
@@ -793,7 +793,7 @@ Public Class Form1
         End If
 
         'PROYECTOR 13K
-        If ComboBox1.SelectedIndex = 6 Then
+        If ComboBox1.Text = "13K (2)" Then
             codigoLote = "13K"
             limiteDeLotes = 2
             Dim errComp As String = ""
@@ -896,7 +896,7 @@ Public Class Form1
         End If
 
         'PROYECTOR 10K
-        If ComboBox1.SelectedIndex = 7 Then
+        If ComboBox1.Text = "10K (2)" Then
             codigoLote = "10K"
             limiteDeLotes = 2
             Dim errComp As String = ""
@@ -999,7 +999,7 @@ Public Class Form1
         End If
 
         'PROYECTOR 8K
-        If ComboBox1.SelectedIndex = 8 Then
+        If ComboBox1.Text = "8.5K (2)" Then
             codigoLote = "8K"
             limiteDeLotes = 2
             Dim errComp As String = ""
@@ -1104,7 +1104,7 @@ Public Class Form1
 
 
         'DISPLAY 85 MATE O BRILLO"
-        If ComboBox1.SelectedIndex = 9 Then
+        If ComboBox1.Text = "85"" Mate o Brillo (4)" Then
             codigoLote = "85"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -1139,7 +1139,7 @@ Public Class Form1
                     Next p
                 Next h
                 If Not codigosDuplicados = "" Then
-                    mensajeFinal += "Los siguientes códigos aparecen más de una vez: " & vbNewLine & codigosDuplicados & vbNewLine & vbNewLine
+                    mensajeFinal += "Los siguientes códigos aparecen más de una vez " & vbNewLine & codigosDuplicados & vbNewLine & vbNewLine
                 End If
             End If
 
@@ -1157,7 +1157,7 @@ Public Class Form1
                     End If
                 Next h
                 If Not errComp = "" Then
-                    mensajeFinal += "Los siguientes códigos no deben ir en un paquete de display de 85 pulgadas: " & vbNewLine & errComp & vbNewLine & vbNewLine
+                    mensajeFinal += "Los siguientes códigos no deben ir en un paquete de display de 85 pulgadas " & vbNewLine & errComp & vbNewLine & vbNewLine
                 End If
             End If
             If loteOK = True Then
@@ -1193,7 +1193,7 @@ Public Class Form1
         End If
 
         'DISPLAY 80"
-        If ComboBox1.SelectedIndex = 10 Then
+        If ComboBox1.Text = "80"" (4)" Then
             codigoLote = "80"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -1308,7 +1308,7 @@ Public Class Form1
         End If
 
         'DISPLAY DE 1 x 65"
-        If ComboBox1.SelectedIndex = 11 Then
+        If ComboBox1.Text = "1 x 65"" (4)" Then
             codigoLote = "1U65"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -1396,7 +1396,7 @@ Public Class Form1
         End If
 
         'DISPLAY DE 2 x 65"
-        If ComboBox1.SelectedIndex = 12 Then
+        If ComboBox1.Text = "2 x 65"" (4)" Then
             codigoLote = "2U65"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -1484,7 +1484,7 @@ Public Class Form1
         End If
 
         'DISPLAY DE 3 x 65"
-        If ComboBox1.SelectedIndex = 13 Then
+        If ComboBox1.Text = "3 x 65"" (4)" Then
             codigoLote = "3U65"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -1572,7 +1572,7 @@ Public Class Form1
         End If
 
         'DISPLAY DE 2 x 55" 4K QM55H
-        If ComboBox1.SelectedIndex = 14 Then
+        If ComboBox1.Text = "2 x 55"" 4K QM55H (4)" Then
             codigoLote = "2QM55H"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -1660,7 +1660,7 @@ Public Class Form1
         End If
 
         'DISPLAY DE 3 x 55" 4K QM55H
-        If ComboBox1.SelectedIndex = 15 Then
+        If ComboBox1.Text = "3 x 55"" 4K QM55H (4)" Then
             codigoLote = "3QM55H"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -1748,7 +1748,7 @@ Public Class Form1
         End If
 
         'DISPLAY DE 2 x 55" ME55C
-        If ComboBox1.SelectedIndex = 16 Then
+        If ComboBox1.Text = "2 x 55"" ME55C (4)" Then
             codigoLote = "ME55C"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -1836,7 +1836,7 @@ Public Class Form1
         End If
 
         'DISPLAY DE 2 x 55" DB55D
-        If ComboBox1.SelectedIndex = 17 Then
+        If ComboBox1.Text = "2 x 55"" DB55D (4)" Then
             codigoLote = "DB55D"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -1924,7 +1924,7 @@ Public Class Form1
         End If
 
         'DISPLAY DE 2 x 49" QB49N
-        If ComboBox1.SelectedIndex = 18 Then
+        If ComboBox1.Text = "2 x 49"" QB49N (4)" Then
             codigoLote = "2QB49N"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -2012,7 +2012,7 @@ Public Class Form1
         End If
 
         'DISPLAY DE 3 x 49" QB49N
-        If ComboBox1.SelectedIndex = 19 Then
+        If ComboBox1.Text = "3 x 49"" QB49N (4)" Then
             codigoLote = "3QB49N"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -2100,7 +2100,7 @@ Public Class Form1
         End If
 
         'DISPLAY DE 1 x 48" DB48E
-        If ComboBox1.SelectedIndex = 20 Then
+        If ComboBox1.Text = "1 x 48"" (4)" Then
             codigoLote = "1DB48E"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -2192,7 +2192,7 @@ Public Class Form1
         End If
 
         'DISPLAY DE 2 x 48" DB48E
-        If ComboBox1.SelectedIndex = 21 Then
+        If ComboBox1.Text = "2 x 48"" (4)" Then
             codigoLote = "2DB48E"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -2280,7 +2280,7 @@ Public Class Form1
         End If
 
         'DISPLAY DE 2 x 46" ME46C
-        If ComboBox1.SelectedIndex = 22 Then
+        If ComboBox1.Text = "2 x 46"" (4)" Then
             codigoLote = "ME46C"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -2368,7 +2368,7 @@ Public Class Form1
         End If
 
         'CLEVERTOUCH DE 55"
-        If ComboBox1.SelectedIndex = 23 Then
+        If ComboBox1.Text = "Clevertouch 55"" (4)" Then
             codigoLote = "CLEV55"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -2496,7 +2496,7 @@ Public Class Form1
         End If
 
         'VIDEOWALL X55
-        If ComboBox1.SelectedIndex = 24 Then
+        If ComboBox1.Text = "NEC X55 (5)" Then
             codigoLote = "X55"
             limiteDeLotes = 5
             Dim errComp As String = ""
@@ -2639,7 +2639,7 @@ Public Class Form1
 
 
         'CUATRO T10
-        If ComboBox1.SelectedIndex = 25 Then
+        If ComboBox1.Text = "4 x T10 (8)" Then
             codigoLote = "4T10"
             limiteDeLotes = 8
             Dim errComp As String = ""
@@ -2714,7 +2714,7 @@ Public Class Form1
         End If
 
         'MAUI
-        If ComboBox1.SelectedIndex = 26 Then
+        If ComboBox1.Text = "MAUI (4)" Then
             codigoLote = "2G2"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -2819,7 +2819,7 @@ Public Class Form1
         End If
 
         'MESA YAMAHA QL5
-        If ComboBox1.SelectedIndex = 27 Then
+        If ComboBox1.Text = "QL5 (4)" Then
             codigoLote = "QL5"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -2896,7 +2896,7 @@ Public Class Form1
 
 
         'AXIOM
-        If ComboBox1.SelectedIndex = 28 Then
+        If ComboBox1.Text = "Axiom (6)" Then
             codigoLote = "AX"
             limiteDeLotes = 6
             Dim errComp As String = ""
@@ -2971,7 +2971,7 @@ Public Class Form1
         End If
 
         'MARTIN MAC700
-        If ComboBox1.SelectedIndex = 29 Then
+        If ComboBox1.Text = "MAC700 (6)" Then
             codigoLote = "700"
             limiteDeLotes = 6
             Dim errComp As String = ""
@@ -3046,7 +3046,7 @@ Public Class Form1
         End If
 
         'BARRAS DE LED Z8.
-        If ComboBox1.SelectedIndex = 30 Then
+        If ComboBox1.Text = "Z8 Strip (4)" Then
             codigoLote = "Z8"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -3123,7 +3123,7 @@ Public Class Form1
 
 
         'LOTE SOCAPEX
-        If ComboBox1.SelectedIndex = 31 Then
+        If ComboBox1.Text = "Socapex (1)" Then
             Dim errComp As String = ""
             Dim m As Integer = 0
             Dim h As Integer = 0
@@ -3241,9 +3241,86 @@ Public Class Form1
 
         End If
 
+        'PAR LED
+        If ComboBox1.Text = "6/8 x Par Led (6)" Then
+            codigoLote = "6PAR"
+            codigoLoteB = "8PAR"
+            limiteDeLotes = 6
+            Dim errComp As String = ""
+            Dim h As Integer = 0
+            Dim p As Integer = 0
+            Dim paquetesQueHay As Integer = 0
+            Dim parledEnLista As Integer = 0
+            Dim parledQueHay As Integer = 0
+            Dim parledHayPorPaquete As Double = 0
+            Dim parledPorPaqueteA As Integer = 6
+            Dim parledPorPaqueteB As Integer = 8
+            Dim loteOK As Boolean = True
+            Dim mensajeFinal As String = ""
+            If Not linea3(0).Contains(".RC") Then
+                mensajeFinal += "El primer código del paquete tiene que ser el de la caja" & vbNewLine & vbNewLine
+                loteOK = False
+            End If
+            If loteOK = True Then
+                For h = 0 To UBound(linea3)
+                    For p = 0 To UBound(linea3)
+                        If Not p = h Then
+                            If linea3(p) = linea3(h) Then
+                                loteOK = False
+                                If Not codigosDuplicados.Contains(linea3(p)) Then
+                                    codigosDuplicados += linea3(p) & vbNewLine
+                                End If
+                            End If
+                        End If
+                    Next p
+                Next h
+                If Not codigosDuplicados = "" Then
+                    mensajeFinal += "Los siguientes códigos aparecen más de una vez: " & vbNewLine & codigosDuplicados & vbNewLine & vbNewLine
+                End If
+            End If
+
+            If loteOK = True Then
+                For h = 0 To UBound(linea3)
+                    If Not (linea3(h).Contains(".RC") Or linea3(h).Contains("PARPL/") Or linea3(h).Contains("PARSHL/") Or linea3(h).Contains("PARUV/")) Then
+                        loteOK = False
+                        If Not errComp.Contains(linea3(h)) Then
+                            errComp += linea3(h) & vbNewLine
+                        End If
+                    End If
+                Next h
+                If Not errComp = "" Then
+                    mensajeFinal += "Los siguientes códigos no deben ir en un paquete de Par Led: " & vbNewLine & errComp & vbNewLine & vbNewLine
+                End If
+            End If
+            If loteOK = True Then
+                For h = 0 To UBound(linea3)
+                    If linea3(h).Contains(codigoLote + ".RC") Or linea3(h).Contains(codigoLoteB + ".RC") Then
+                        paquetesQueHay += 1
+                    End If
+                    If linea3(h).Contains("PARPL/") Or linea3(h).Contains("PARSHL/") Or linea3(h).Contains("PARUV/") Then
+                        parledQueHay += 1
+                    End If
+                Next h
+                parledHayPorPaquete = parledQueHay / paquetesQueHay
+                If parledHayPorPaquete <> parledPorPaqueteA And parledHayPorPaquete <> parledPorPaqueteB Then
+                    mensajeFinal += "La cantidad de Par Led por paquete difiere de " & parledPorPaqueteA & " u " & parledPorPaqueteB & vbNewLine
+                    loteOK = False
+                End If
+            End If
+            comprobacion()
+            If errorRC = False And loteOK = True Then
+                MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
+                volcado()
+            Else
+                MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
+            End If
+        End If
+
 
 ErrorHandler:
         Resume Next
     End Sub
+
+
 End Class
 
