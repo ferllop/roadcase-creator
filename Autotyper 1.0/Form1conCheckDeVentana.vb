@@ -324,7 +324,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -410,7 +410,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -508,7 +508,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -594,7 +594,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -669,7 +669,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -787,7 +787,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -890,7 +890,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -993,7 +993,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -1096,7 +1096,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -1187,7 +1187,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -1302,7 +1302,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -1390,7 +1390,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -1478,7 +1478,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -1566,7 +1566,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -1654,7 +1654,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -1742,7 +1742,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -1830,7 +1830,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -1918,7 +1918,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -2006,7 +2006,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -2094,7 +2094,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -2186,7 +2186,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -2274,7 +2274,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -2362,7 +2362,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -2490,7 +2490,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -2631,7 +2631,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -2708,7 +2708,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -2813,7 +2813,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -2888,7 +2888,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -2965,7 +2965,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -3040,7 +3040,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -3115,7 +3115,7 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If
@@ -3143,20 +3143,20 @@ Public Class Form1
             Dim pulpoM As Integer = 4
             Dim pulpoH As Integer = 2
             Dim boxSoca As Integer = 2
-            Dim loteSocaOK As Boolean = True
+            Dim loteOK As Boolean = True
             Dim mensajeFinal As String = ""
             codigoLote = "SPX"
             limiteDeLotes = 1
             If Not linea3(0).Contains(".RC") Then
                 mensajeFinal += "El primer código del paquete tiene que ser el de la caja" & vbNewLine & vbNewLine
-                loteSocaOK = False
+                loteOK = False
             End If
-            If loteSocaOK = True Then
+            If loteOK = True Then
                 For h = 0 To UBound(linea3)
                     For p = 0 To UBound(linea3)
                         If Not p = h Then
                             If linea3(p) = linea3(h) Then
-                                loteSocaOK = False
+                                loteOK = False
                                 If Not codigosDuplicados.Contains(linea3(p)) Then
                                     codigosDuplicados += linea3(p) & vbNewLine
                                 End If
@@ -3169,7 +3169,7 @@ Public Class Form1
                 End If
             End If
 
-            If loteSocaOK = True Then
+            If loteOK = True Then
                 For h = 0 To UBound(linea3)
                     If linea3(h).Contains(".RC") Or
                                 linea3(h).Contains("PB20/") Or linea3(h).Contains("SCPX20/") Or
@@ -3179,7 +3179,7 @@ Public Class Form1
                                 linea3(h).Contains("SPXF/") Or linea3(h).Contains("SCPXF/") Or
                                 linea3(h).Contains("SPX2SK/") Then
                     Else
-                        loteSocaOK = False
+                        loteOK = False
                         If Not errComp.Contains(linea3(h)) Then
                             errComp += linea3(h) & vbNewLine
                         End If
@@ -3190,7 +3190,7 @@ Public Class Form1
                 End If
             End If
 
-            If loteSocaOK = True Then
+            If loteOK = True Then
                 For h = 0 To UBound(linea3)
                     If linea3(h).Contains("PB20/") Or linea3(h).Contains("SCPX20/") Then
                         soca20qty += 1
@@ -3208,43 +3208,42 @@ Public Class Form1
                 Next h
                 If soca20qty <> soca20 Then
                     mensajeFinal += "La cantidad de socapex de 20m difiere de " & soca20 & vbNewLine
-                    loteSocaOK = False
+                    loteOK = False
                 End If
                 If soca10qty <> soca10 Then
                     mensajeFinal += "La cantidad de socapex de 10m difiere de " & soca10 & vbNewLine
-                    loteSocaOK = False
+                    loteOK = False
                 End If
                 If soca05qty <> soca05 Then
                     mensajeFinal += "La cantidad de socapex de 5m difiere de " & soca05 & vbNewLine
-                    loteSocaOK = False
+                    loteOK = False
                 End If
                 If pulpoMqty <> pulpoM Then
                     mensajeFinal += "La cantidad de pulpos macho difiere de " & pulpoM & vbNewLine
-                    loteSocaOK = False
+                    loteOK = False
                 End If
                 If pulpoHqty <> pulpoH Then
                     mensajeFinal += "La cantidad de pulpos hembra difiere de " & pulpoH & vbNewLine
-                    loteSocaOK = False
+                    loteOK = False
                 End If
                 If boxSocaqty <> boxSoca Then
                     mensajeFinal += "La cantidad de cajetines hembra difiere de " & boxSoca & vbNewLine
-                    loteSocaOK = False
+                    loteOK = False
                 End If
             End If
             comprobacion()
-            If errorRC = False And loteSocaOK = True Then
+            If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
 
         End If
 
-        'PAR LED
-        If ComboBox1.Text = "6/8 x Par Led (6)" Then
+        '6 x PAR LED 
+        If ComboBox1.Text = "6 x Par Led (6)" Then
             codigoLote = "6PAR"
-            codigoLoteB = "8PAR"
             limiteDeLotes = 6
             Dim errComp As String = ""
             Dim h As Integer = 0
@@ -3253,8 +3252,7 @@ Public Class Form1
             Dim parledEnLista As Integer = 0
             Dim parledQueHay As Integer = 0
             Dim parledHayPorPaquete As Double = 0
-            Dim parledPorPaqueteA As Integer = 6
-            Dim parledPorPaqueteB As Integer = 8
+            Dim parledPorPaquete As Integer = 6
             Dim loteOK As Boolean = True
             Dim mensajeFinal As String = ""
             If Not linea3(0).Contains(".RC") Then
@@ -3289,7 +3287,7 @@ Public Class Form1
                     End If
                 Next h
                 If Not errComp = "" Then
-                    mensajeFinal += "Los siguientes códigos no deben ir en un paquete de Par Led: " & vbNewLine & errComp & vbNewLine & vbNewLine
+                    mensajeFinal += "Los siguientes códigos no deben ir en un paquete de 6 x Par Led: " & vbNewLine & errComp & vbNewLine & vbNewLine
                 End If
             End If
             If loteOK = True Then
@@ -3302,8 +3300,8 @@ Public Class Form1
                     End If
                 Next h
                 parledHayPorPaquete = parledQueHay / paquetesQueHay
-                If parledHayPorPaquete <> parledPorPaqueteA And parledHayPorPaquete <> parledPorPaqueteB Then
-                    mensajeFinal += "La cantidad de Par Led por paquete difiere de " & parledPorPaqueteA & " u " & parledPorPaqueteB & vbNewLine
+                If parledHayPorPaquete <> parledPorPaquete Then
+                    mensajeFinal += "La cantidad de Par Led por paquete difiere de " & parledPorPaquete & vbNewLine
                     loteOK = False
                 End If
             End If
@@ -3311,7 +3309,80 @@ Public Class Form1
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
                 volcado()
-            Else
+            ElseIf errorRC = False And loteOK = False Then
+                MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
+            End If
+        End If
+
+        '8 x PAR LED 
+        If ComboBox1.Text = "8 x Par Led (6)" Then
+            codigoLote = "8PAR"
+            limiteDeLotes = 6
+            Dim errComp As String = ""
+            Dim h As Integer = 0
+            Dim p As Integer = 0
+            Dim paquetesQueHay As Integer = 0
+            Dim parledEnLista As Integer = 0
+            Dim parledQueHay As Integer = 0
+            Dim parledHayPorPaquete As Double = 0
+            Dim parledPorPaquete As Integer = 8
+            Dim loteOK As Boolean = True
+            Dim mensajeFinal As String = ""
+            If Not linea3(0).Contains(".RC") Then
+                mensajeFinal += "El primer código del paquete tiene que ser el de la caja" & vbNewLine & vbNewLine
+                loteOK = False
+            End If
+            If loteOK = True Then
+                For h = 0 To UBound(linea3)
+                    For p = 0 To UBound(linea3)
+                        If Not p = h Then
+                            If linea3(p) = linea3(h) Then
+                                loteOK = False
+                                If Not codigosDuplicados.Contains(linea3(p)) Then
+                                    codigosDuplicados += linea3(p) & vbNewLine
+                                End If
+                            End If
+                        End If
+                    Next p
+                Next h
+                If Not codigosDuplicados = "" Then
+                    mensajeFinal += "Los siguientes códigos aparecen más de una vez: " & vbNewLine & codigosDuplicados & vbNewLine & vbNewLine
+                End If
+            End If
+
+            If loteOK = True Then
+                For h = 0 To UBound(linea3)
+                    If Not (linea3(h).Contains(".RC") Or linea3(h).Contains("PARPL/") Or linea3(h).Contains("PARSHL/") Or linea3(h).Contains("PARUV/")) Then
+                        loteOK = False
+                        If Not errComp.Contains(linea3(h)) Then
+                            errComp += linea3(h) & vbNewLine
+                        End If
+                    End If
+                Next h
+                If Not errComp = "" Then
+                    mensajeFinal += "Los siguientes códigos no deben ir en un paquete de 8 x Par Led: " & vbNewLine & errComp & vbNewLine & vbNewLine
+                End If
+            End If
+            If loteOK = True Then
+                For h = 0 To UBound(linea3)
+                    If linea3(h).Contains(codigoLote + ".RC") Or linea3(h).Contains(codigoLoteB + ".RC") Then
+                        paquetesQueHay += 1
+                    End If
+                    If linea3(h).Contains("PARPL/") Or linea3(h).Contains("PARSHL/") Or linea3(h).Contains("PARUV/") Then
+                        parledQueHay += 1
+                    End If
+                Next h
+                parledHayPorPaquete = parledQueHay / paquetesQueHay
+                If parledHayPorPaquete <> parledPorPaquete Then
+                    mensajeFinal += "La cantidad de Par Led por paquete difiere de " & parledPorPaquete & vbNewLine
+                    loteOK = False
+                End If
+            End If
+            comprobacion()
+            If errorRC = False And loteOK = True Then
+                MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
+                volcado()
+            ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
         End If

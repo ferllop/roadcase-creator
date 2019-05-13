@@ -54,7 +54,7 @@ Partial Class Form1
         '
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Absen (6)", "Absen Back Support (6)", "Absen Ground Beam 1 x 1.5m + 2 x 1m(4) ", "Absen Ground Beam 2 x 2m (4)", "24 x DigiLED MCK7 (4)", "21K (2)", "13K (2)", "10K (2)", "8.5K (2)", "85"" Mate o Brillo (4)", "80"" (4)", "1 x 65"" (4)", "2 x 65"" (4)", "3 x 65"" (4)", "2 x 55"" 4K QM55H (4)", "3 x 55"" 4K QM55H (4)", "2 x 55"" ME55C (4)", "2 x 55"" DB55D (4)", "2 x 49"" QB49N (4)", "3 x 49"" QB49N (4)", "1 x 48"" (4)", "2 x 48"" (4)", "2 x 46"" (4)", "Clevertouch 55"" (4)", "NEC X55 (5)", "4 x T10 (8)", "MAUI (4)", "QL5 (4)", "Axiom (6)", "MAC700 (6)", "Z8 Strip (4)", "Socapex (1)", "6/8 x Par Led (6)"})
+        Me.ComboBox1.Items.AddRange(New Object() {"Absen (6)", "Absen Back Support (6)", "Absen Ground Beam 1 x 1.5m + 2 x 1m(4) ", "Absen Ground Beam 2 x 2m (4)", "24 x DigiLED MCK7 (4)", "21K (2)", "13K (2)", "10K (2)", "8.5K (2)", "85"" Mate o Brillo (4)", "80"" (4)", "1 x 65"" (4)", "2 x 65"" (4)", "3 x 65"" (4)", "2 x 55"" 4K QM55H (4)", "3 x 55"" 4K QM55H (4)", "2 x 55"" ME55C (4)", "2 x 55"" DB55D (4)", "2 x 49"" QB49N (4)", "3 x 49"" QB49N (4)", "1 x 48"" (4)", "2 x 48"" (4)", "2 x 46"" (4)", "Clevertouch 55"" (4)", "NEC X55 (5)", "4 x T10 (8)", "MAUI (4)", "QL5 (4)", "Axiom (6)", "MAC700 (6)", "Z8 Strip (4)", "Socapex (1)", "6 x Par Led (6)", "8 x Par Led (6)"})
         Me.ComboBox1.Location = New System.Drawing.Point(27, 87)
         Me.ComboBox1.MaxDropDownItems = 10
         Me.ComboBox1.Name = "ComboBox1"
