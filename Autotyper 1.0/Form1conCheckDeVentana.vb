@@ -3292,7 +3292,7 @@ Public Class Form1
             End If
             If loteOK = True Then
                 For h = 0 To UBound(linea3)
-                    If linea3(h).Contains(codigoLote + ".RC") Or linea3(h).Contains(codigoLoteB + ".RC") Then
+                    If linea3(h).Contains(codigoLote + ".RC") Then
                         paquetesQueHay += 1
                     End If
                     If linea3(h).Contains("PARPL/") Or linea3(h).Contains("PARSHL/") Or linea3(h).Contains("PARUV/") Then
@@ -3365,7 +3365,7 @@ Public Class Form1
             End If
             If loteOK = True Then
                 For h = 0 To UBound(linea3)
-                    If linea3(h).Contains(codigoLote + ".RC") Or linea3(h).Contains(codigoLoteB + ".RC") Then
+                    If linea3(h).Contains(codigoLote + ".RC") Then
                         paquetesQueHay += 1
                     End If
                     If linea3(h).Contains("PARPL/") Or linea3(h).Contains("PARSHL/") Or linea3(h).Contains("PARUV/") Then
