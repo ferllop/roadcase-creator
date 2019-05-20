@@ -416,7 +416,7 @@ Public Class Form1
         End If
 
         'ABSEN GROUND BEAM 2 x 1m + 1 x 1.5m
-        If ComboBox1.Text = "Absen Ground Beam 1 x 1.5m + 2 x 1m(4)" Then
+        If ComboBox1.Text = "Absen Ground Beam 1 x 1.5m + 2 x 1m (4)" Then
             codigoLote = "A3GB1"
             limiteDeLotes = 4
             Dim errComp As String = ""
@@ -507,7 +507,7 @@ Public Class Form1
             comprobacion()
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
-                volcado()
+                'volcado()
             ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
