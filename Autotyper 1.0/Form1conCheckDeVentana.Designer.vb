@@ -33,7 +33,7 @@ Partial Class Form1
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(230, 87)
+        Me.Button1.Location = New System.Drawing.Point(101, 673)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 0
@@ -43,7 +43,7 @@ Partial Class Form1
         'TextBox1
         '
         Me.TextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox1.Location = New System.Drawing.Point(27, 134)
+        Me.TextBox1.Location = New System.Drawing.Point(71, 130)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both
@@ -58,7 +58,7 @@ Partial Class Form1
         Me.ComboBox1.Location = New System.Drawing.Point(27, 87)
         Me.ComboBox1.MaxDropDownItems = 10
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(171, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(278, 21)
         Me.ComboBox1.TabIndex = 2
         '
         'Label1
@@ -101,7 +101,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(319, 667)
+        Me.ClientSize = New System.Drawing.Size(321, 712)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
