@@ -339,7 +339,7 @@ Public Class Form1
         paquetes = Replace(paquetes, "]", "})")
         paquetes = Replace(paquetes, vbCrLf, "")
         paquetes = cleanLine(paquetes)
-        Dim listadoPaquetes = paquetes.Select(paquetes.ToArray)
+        Dim listadoPaquetes() As Object = paquetes
         TextBox1.Text = cleanLine(TextBox1.Text)
         Dim linea As String() = Split(TextBox1.Text, vbCrLf)
 
