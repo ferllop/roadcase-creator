@@ -507,7 +507,7 @@ Public Class Form1
             comprobacion()
             If errorRC = False And loteOK = True Then
                 MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
-                'volcado()
+                volcado()
             ElseIf errorRC = False And loteOK = False Then
                 MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
             End If
