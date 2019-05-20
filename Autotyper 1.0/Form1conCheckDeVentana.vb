@@ -1,19 +1,222 @@
 ﻿Imports System.Runtime.InteropServices
-'Imports System
 Imports System.IO
 Imports System.Text
 
 Public Class Form1
-    Dim listado_de_paquetes() = {({"8 x Par Led (6)", ({"6PAR.RC", "8PAR.RC"}), 6, ({
-                    ({
-                        "Parled", ({"PARPL", "PARSHL", "PARUV"}), 8
-                    }),
-                    ({
-                        "Mando a distancia", ({"PARRC", "PRC"}), 1
-                    })
-                })})}
+    Dim listado_de_paquetes() = {
+        ({"Absen (6)", ({"A3.RC"}), 6,
+            ({
+                ({"TILES ABSEN", ({"SPA3"}), 6})
+            })
+        }),
+        ({"Absen Back Support (6)", ({"A3BS.RC"}), 6,
+            ({
+                ({"BACK SUPPORTS", ({"A3BS", "A3PBS1"}), 6}),
+                ({"BANDEJAS DE 1m", ({"A3TRAY", "A3PBT"}), 3})
+            })
+        }),
+        ({"Absen Ground Beam 1 x 1.5m + 2 x 1m (4)", ({"A3GB1.RC"}), 4,
+            ({
+                ({"GROUND BEAM DE 1.5m", ({"A3GB1.5"}), 1}),
+                ({"GROUND BEAM DE 1m", ({"A3GB1"}), 2}),
+                ({"OUTRIGGERS", ({"A3OUT"}), 4})
+            })
+        }),
+        ({"Absen Ground Beam 2 x 2m (4)", ({"A3GB2.RC"}), 4,
+            ({
+                ({"GROUND BEAM DE 2m", ({"A3GB2"}), 2}),
+                ({"OUTRIGGERS", ({"A3OUT"}), 4})
+            })
+        }),
+        ({"21K (4)", ({"21K.RC"}), 4,
+            ({
+                ({"PROYECTORES DE 21K", ({"PAN21K"}), 1}),
+                ({"MANDOS CON HDMI PARA PROYECTOR PANASONIC", ({"RCPANMI", "RCPAN"}), 1}),
+                ({"RENTAL FRAME PARA 21K", ({"RF21K"}), 1}),
+                ({"CONVERSORES SCJUKO A 16A MONOFÁSICO", ({"SK16"}), 1})
+            })
+        }),
+        ({"13K (4)", ({"13K.RC"}), 4,
+            ({
+                ({"PROYECTORES DE 13K", ({"PAN13K"}), 1}),
+                ({"MANDOS CON HDMI PARA PROYECTOR PANASONIC", ({"RCPANMI", "RCPAN"}), 1}),
+                ({"RENTAL FRAME PARA 13K", ({"RF13K"}), 1})
+            })
+        }),
+        ({"10K (4)", ({"10K.RC"}), 4,
+            ({
+                ({"PROYECTORES DE 10K", ({"PAN10K"}), 1}),
+                ({"MANDOS CON HDMI PARA PROYECTOR PANASONIC", ({"RCPANMI", "RCPAN"}), 1}),
+                ({"RENTAL FRAME PARA 10K", ({"RF10K"}), 1})
+            })
+        }),
+        ({"8.5K (4)", ({"8K.RC"}), 4,
+            ({
+                ({"PROYECTORES DE 8.5K", ({"PT870"}), 1}),
+                ({"MANDOS CON HDMI PARA PROYECTOR PANASONIC", ({"RCPANMI", "RCPAN"}), 1}),
+                ({"RENTAL FRAME PARA 8K", ({"RF8K"}), 1})
+            })
+        }),
+        ({"85 pulgadas Mate o Brillo (4)", ({"85.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 85 PULGADAS", ({"QM85D", "QM85NMAT"}), 1}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY SAMSUNG", ({"SRC1"}), 1})
+            })
+        }),
+        ({"80 pulgadas (4)", ({"80.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 80 PULGADAS", ({"SHARP80"}), 1}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY DE 80 PULGADAS", ({"HRC"}), 1}),
+                ({"SOPORTES PARA DISPLAY DE 80 PULGADAS", ({"SOP80"}), 1}),
+                ({"LLAVES ALLEN PARA EL SOPORTE DE DISPLAY DE 80 PULGADAS", ({"80KEY"}), 1})
+            })
+        }),
+        ({"1 x 65 pulgadas (4)", ({"1U65.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 65 PULGADAS", ({"QM65H"}), 1}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY SAMSUNG", ({"SRC1"}), 1})
+            })
+        }),
+        ({"2 x 65 pulgadas (4)", ({"2U65.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 65 PULGADAS", ({"QM65H"}), 2}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY SAMSUNG", ({"SRC1"}), 1})
+            })
+        }),
+        ({"3 x 65 pulgadas (4)", ({"3U65.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 65 PULGADAS", ({"QM65H"}), 3}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY SAMSUNG", ({"SRC1"}), 1})
+            })
+        }),
+        ({"2 x 55 pulgadas 4K QM55H (4)", ({"2QM55H.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 55 PULGADAS QM55H", ({"QM55H"}), 2}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY SAMSUNG", ({"SRC1"}), 1})
+            })
+        }),
+        ({"3 x 55 pulgadas 4K QM55H (4)", ({"3QM55H.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 55 PULGADAS QM55H", ({"QM55H"}), 3}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY SAMSUNG", ({"SRC1"}), 1})
+            })
+        }),
+        ({"2 x 55 pulgadas ME55C (4)", ({"ME55C.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 55 PULGADAS ME55C", ({"ME55C"}), 2}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY SAMSUNG", ({"SRC1"}), 1})
+            })
+        }),
+        ({"2 x 55 pulgadas DB55D (4)", ({"DB55D.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 55 PULGADAS DB55D", ({"DB55D"}), 2}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY SAMSUNG", ({"SRC1"}), 1})
+            })
+        }),
+        ({"2 x 49 pulgadas QB49N (4)", ({"2QB49N.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 49 PULGADAS QB49N", ({"QB49N"}), 2}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY SAMSUNG", ({"SRC1"}), 1})
+            })
+        }),
+        ({"3 x 49 pulgadas QB49N (4)", ({"3QB49N.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 49 PULGADAS QB49N", ({"QB49N"}), 3}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY SAMSUNG", ({"SRC1"}), 1})
+            })
+        }),
+        ({"1 x 48 pulgadas DB48E (4)", ({"1DB48E.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 48 PULGADAS DB48E", ({"DB48E"}), 1}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY SAMSUNG", ({"SRC1"}), 1})
+            })
+        }),
+        ({"2 x 48 pulgadas DB48E (4)", ({"2DB48E.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 48 PULGADAS DB48E", ({"DB48E"}), 2}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY SAMSUNG", ({"SRC1"}), 1})
+            })
+        }),
+        ({"2 x 46 pulgadas ME46C (4)", ({"ME46C.RC"}), 4,
+            ({
+                ({"DISPLAYS DE 46 PULGADAS DB48E", ({"ME46C"}), 2}),
+                ({"MANDOS A DISTANCIA PARA DISPLAY SAMSUNG", ({"SRC1"}), 1})
+            })
+        }),
+        ({"Clevertouch 55 pulgadas (4)", ({"CLEV55.RC"}), 4,
+            ({
+                ({"CLEVERTOUCH 55 PULGADAS", ({"CLEV55P"}), 2}),
+                ({"MANDOS A DISTANCIA PARA CLEVERTOUCH 55 PULGADAS", ({"CLEVERC"}), 2}),
+                ({"PUNTEROS PARA CLEVERTOUCH 55 PULGADAS", ({"RUBPEN"}), 2}),
+                ({"CABLES USB PARA CLEVERTOUCH 55 PULGADAS", ({"CLUS"}), 2}),
+                ({"ANTENAS PARA CLEVERTOUCH 55 PULGADAS", ({"2458G"}), 2})
+            })
+        }),
+        ({"NEC X55 (5)", ({"X55.RC"}), 5,
+            ({
+                ({"DISPLAY NEC X55", ({"X55"}), 2}),
+                ({"MALETIN PARA X55", ({"X55AS"}), 2}),
+                ({"EASYFRAME FRAME PARA X555UNS", ({"X55FR"}), 2}),
+                ({"STACKER FRAME PARA X555UNS", ({"X55SF"}), 2}),
+                ({"EASYFRAME DOUBLE MAGNETIC HOLDER", ({"2M"}), 2}),
+                ({"EASYFRAME QUADRUPLE MAGNETIC HOLDER", ({"4M"}), 2})
+            })
+        }),
+        ({"4 x T10 (8)", ({"4T10.RC"}), 8,
+            ({
+                ({"D&B T10", ({"T10"}), 4})
+            })
+        }),
+        ({"MAUI (4)", ({"2G2.RC"}), 4,
+            ({
+                ({"SUBGRAVES MAUI", ({"G2SUB"}), 2}),
+                ({"TOP INFERIOR MAUI", ({"G2LTOP"}), 2}),
+                ({"TOP INFERIOR MAUI", ({"G2UTOP"}), 2})
+            })
+        }),
+        ({"QL5 (4)", ({"QL5.RC"}), 4,
+            ({
+                ({"YAMAHA QL5", ({"YQL548"}), 1})
+            })
+        }),
+        ({"Axiom (6)", ({"AX.RC"}), 6,
+            ({
+                ({"MARTIN MAC AXIOM", ({"AXIOM"}), 2})
+            })
+        }),
+        ({"MAC700 (6)", ({"700.RC"}), 6,
+            ({
+                ({"MARTIN MAC 700", ({"MAC700"}), 2})
+            })
+        }),
+        ({"Z8 Strip (4)", ({"Z8.RC"}), 4,
+            ({
+                ({"BARRAS Z8", ({"Z8STRIP"}), 2})
+            })
+        }),
+        ({"Socapex (1)", ({"SPX.RC"}), 5,
+            ({
+                ({"SOCAPEX DE 20m", ({"PB20", "SCPX20"}), 4}),
+                ({"SOCAPEX DE 10m", ({"PB10", "SCPX10"}), 4}),
+                ({"SOCAPEX DE 5m", ({"PB05", "SCPX05"}), 4}),
+                ({"PULPOS SOCAPEX MACHO", ({"SPXM", "SCPXM"}), 4}),
+                ({"PULPOS SOCAPEX HEMBRA", ({"SPXF", "SCPXF"}), 2}),
+                ({"CAJETINES HEMBRA", ({"SPX2SK"}), 2})
+            })
+        }),
+        ({"6 x Par Led (6)", ({"6PAR.RC"}), 6,
+            ({
+                ({"Parleds", ({"PARPL", "PARSHL", "PARUV"}), 6})
+            })
+        }),
+        ({"8 x Par Led (6)", ({"8PAR.RC"}), 6,
+            ({
+                ({"Parleds", ({"PARPL", "PARSHL", "PARUV"}), 8})
+            })
+        })
+    }
 
-    Dim paquetes = File.ReadAllText("\\HPACTION\Almacen\macros-No-borrar-nunca\paquetes.txt")
+    'Dim listado_de_paquetes2() As String = File.ReadAllText("\\HPACTION\Almacen\macros-No-borrar-nunca\paquetes.txt")
 
     <DllImport("user32.dll", EntryPoint:="GetWindowThreadProcessId")>
     Private Shared Function GetWindowThreadProcessId(<InAttribute()> ByVal hWnd As IntPtr, ByRef lpdwProcessId As Integer) As Integer
@@ -26,6 +229,19 @@ Public Class Form1
     Private Shared Function GetWindowTextW(<InAttribute()> ByVal hWnd As IntPtr, <OutAttribute(), MarshalAs(UnmanagedType.LPWStr)> ByVal lpString As StringBuilder, ByVal nMaxCount As Integer) As Integer
     End Function
 
+    Function fillComboBox(ByVal paquetes())
+        ComboBox1.MaxDropDownItems = paquetes.Length
+        Dim dropdown_content() = {}
+
+        For i = 0 To paquetes.Length - 1
+            ReDim Preserve dropdown_content(dropdown_content.Length)
+            dropdown_content(dropdown_content.Length - 1) = paquetes(i)(0)
+        Next
+        For i = 0 To dropdown_content.Length - 1
+            ComboBox1.Items.Add(dropdown_content(i))
+        Next
+        Return True
+    End Function
 
     Function Wait(ByVal dblSecs As Double)
 
@@ -334,12 +550,17 @@ Public Class Form1
         Return productos_incorrectos
     End Function
 
+    Sub Form1_Load() Handles MyBase.Load
+        fillComboBox(listado_de_paquetes)
+    End Sub
+
     Sub Button1_Click() Handles Button1.Click
-        paquetes = Replace(paquetes, "[", "({")
-        paquetes = Replace(paquetes, "]", "})")
-        paquetes = Replace(paquetes, vbCrLf, "")
-        paquetes = cleanLine(paquetes)
-        Dim listadoPaquetes() As Object = paquetes
+        'paquetes = Replace(paquetes, "[", "({")
+        'paquetes = Replace(paquetes, "]", "})")
+        'paquetes = Replace(paquetes, vbCrLf, "")
+        'paquetes = cleanLine(paquetes)
+        'Dim listadoPaquetes() As Object = paquetes
+
         TextBox1.Text = cleanLine(TextBox1.Text)
         Dim linea As String() = Split(TextBox1.Text, vbCrLf)
 
@@ -405,6 +626,7 @@ Public Class Form1
         Next
 
     End Sub
+
 
 End Class
 
