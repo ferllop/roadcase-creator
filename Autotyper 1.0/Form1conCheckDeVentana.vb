@@ -215,9 +215,10 @@ Public Class Form1
             })
         })
     }
-
-    'Dim listado_de_paquetes2() As String = File.ReadAllText("\\HPACTION\Almacen\macros-No-borrar-nunca\paquetes.txt")
-
+    Dim windowError As Boolean
+    Dim paraloTodo As Boolean
+    'Dim listado_de_paquetes2 As String = File.ReadAllText("\\HPACTION\Almacen\macros-No-borrar-nunca\paquetes-test.txt")
+    'Dim arrayPaquetes() = listado_de_paquetes2.Split(vbCrLf)
     <DllImport("user32.dll", EntryPoint:="GetWindowThreadProcessId")>
     Private Shared Function GetWindowThreadProcessId(<InAttribute()> ByVal hWnd As IntPtr, ByRef lpdwProcessId As Integer) As Integer
     End Function
@@ -261,9 +262,9 @@ Public Class Form1
         inputText = inputText.Trim(vbCrLf.ToCharArray)
         Return inputText
     End Function
-    Function focus_on_roadcase_window()
-        Dim paraloTodo As Boolean = False
-        Dim windowError As Boolean = True
+    Function focoRoadcase()
+        paraloTodo = False
+        windowError = True
         While windowError And Not paraloTodo
             Dim hWnd As IntPtr = GetForegroundWindow()
             If Not hWnd.Equals(IntPtr.Zero) Then
@@ -300,11 +301,11 @@ Public Class Form1
                 End If
             End If
         End While
-        Return Not windowError
+        Return windowError
     End Function
     Function WarningWindow()
-        Dim paraloTodo As Boolean = False = False
-        Dim windowError As Boolean = True
+        paraloTodo = False
+        windowError = True
         While windowError And Not paraloTodo
             Dim hWnd As IntPtr = GetForegroundWindow()
             If Not hWnd.Equals(IntPtr.Zero) Then
@@ -346,7 +347,8 @@ Public Class Form1
 
         Wait(5)
 
-        If focus_on_roadcase_window() Then
+        focoRoadcase()
+        If Not windowError Then
             For i = 0 To UBound(lineaRaw)
                 If Not String.IsNullOrEmpty(lineaRaw(i)) And Not lineaRaw(i) = vbCrLf Then
                     textSinEspacios += lineaRaw(i) & vbCrLf
@@ -366,16 +368,23 @@ Public Class Form1
                         If linea(i + 1).Contains(".RC") Then
                             SendKeys.Send(linea(i) & "{Enter}")
                             Wait(0.2)
-
-                            If WarningWindow() Then
+                            WarningWindow()
+                            If paraloTodo And windowError Then
                                 Return False
-                                'Exit For
+                                Exit For
                             End If
-
-                            Dim response As MsgBoxResult = MsgBox("Roadcase completo." & vbNewLine & "Si seleccionas 'YES' el proceso continuará." & vbNewLine & "Si seleccionas NO el proceso finalizará y deberás repasar lo que se pueda haber quedado a medias.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.YesNo, "Roadcase completo")
+                            Dim msg As String
+                            Dim title As String
+                            Dim style As MsgBoxStyle
+                            Dim response As MsgBoxResult
+                            msg = "Roadcase completo." & vbNewLine & "Si seleccionas 'YES' el proceso continuará." & vbNewLine & "Si seleccionas NO el proceso finalizará y deberás repasar lo que se pueda haber quedado a medias."   ' Define message.
+                            style = MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.YesNo
+                            title = "Roadcase completo"   ' Define title.
+                            ' Display message.
+                            response = MsgBox(msg, style, title)
                             If response = MsgBoxResult.Yes Then   ' User chose Yes.
-
-                                If Not focus_on_roadcase_window() Then
+                                focoRoadcase()
+                                If paraloTodo And windowError Then
                                     Exit For
                                 Else
                                     SendKeys.Send(okroadcase & "{Enter}")
@@ -388,10 +397,10 @@ Public Class Form1
                         Else
                             SendKeys.Send(linea(i) & "{Enter}")
                             Wait(0.2)
-
-                            If WarningWindow() Then
+                            WarningWindow()
+                            If paraloTodo And windowError Then
                                 Return False
-                                'Exit For
+                                Exit For
                             End If
                         End If
                     End If
@@ -617,7 +626,7 @@ Public Class Form1
 
                 If mensajeFinal = "" Then
                     MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
-                    'volcado()
+                    volcado()
                 Else
                     MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
                 End If
