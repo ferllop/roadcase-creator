@@ -3,7 +3,23 @@ Imports System.IO
 Imports System.Text
 
 Public Class Form1
-    Dim listado_de_paquetes() = {
+
+
+    <DllImport("user32.dll", EntryPoint:="GetWindowThreadProcessId")>
+    Private Shared Function GetWindowThreadProcessId(<InAttribute()> ByVal hWnd As IntPtr, ByRef lpdwProcessId As Integer) As Integer
+    End Function
+    <DllImport("user32.dll", EntryPoint:="GetForegroundWindow")> Private Shared Function GetForegroundWindow() As IntPtr
+    End Function
+    <DllImport("user32.dll", SetLastError:=True, CharSet:=CharSet.Auto)> Private Shared Function GetWindowTextLength(ByVal hwnd As IntPtr) As Integer
+    End Function
+    <DllImport("user32.dll", EntryPoint:="GetWindowTextW")>
+    Private Shared Function GetWindowTextW(<InAttribute()> ByVal hWnd As IntPtr, <OutAttribute(), MarshalAs(UnmanagedType.LPWStr)> ByVal lpString As StringBuilder, ByVal nMaxCount As Integer) As Integer
+    End Function
+
+    '
+    Dim windowError As Boolean
+    Dim paraloTodo As Boolean
+    Dim listado_manual() = {
         ({"Absen (6)", ({"A3.RC"}), 6,
             ({
                 ({"TILES ABSEN", ({"SPA3"}), 6})
@@ -215,21 +231,74 @@ Public Class Form1
             })
         })
     }
-    Dim windowError As Boolean
-    Dim paraloTodo As Boolean
-    'Dim listado_de_paquetes2 As String = File.ReadAllText("\\HPACTION\Almacen\macros-No-borrar-nunca\paquetes-test.txt")
-    'Dim arrayPaquetes() = listado_de_paquetes2.Split(vbCrLf)
-    <DllImport("user32.dll", EntryPoint:="GetWindowThreadProcessId")>
-    Private Shared Function GetWindowThreadProcessId(<InAttribute()> ByVal hWnd As IntPtr, ByRef lpdwProcessId As Integer) As Integer
-    End Function
-    <DllImport("user32.dll", EntryPoint:="GetForegroundWindow")> Private Shared Function GetForegroundWindow() As IntPtr
-    End Function
-    <DllImport("user32.dll", SetLastError:=True, CharSet:=CharSet.Auto)> Private Shared Function GetWindowTextLength(ByVal hwnd As IntPtr) As Integer
-    End Function
-    <DllImport("user32.dll", EntryPoint:="GetWindowTextW")>
-    Private Shared Function GetWindowTextW(<InAttribute()> ByVal hWnd As IntPtr, <OutAttribute(), MarshalAs(UnmanagedType.LPWStr)> ByVal lpString As StringBuilder, ByVal nMaxCount As Integer) As Integer
-    End Function
+    Dim listado_de_paquetes As String = File.ReadAllText("\\HPACTION\Almacen\macros-No-borrar-nunca\listado_paquetes.txt")
+    'Dim array_paquetes As String() = listado_de_paquetes2.Split(vbCrLf)
+    Dim array_paquetes() = {}
 
+
+    Dim paqueteArray As String()
+    Dim configPaqueteString As String
+    Dim configPaqueteArray As String()
+    Dim componentesPaqueteString As String
+    Dim componentesPaqueteArray As String()
+    Dim codigosPaqueteString As String
+    Dim codigosPaqueteArray As String()
+    Dim descripcionPaqueteString As String
+    Dim limitePaqueteInteger As Integer
+    Dim componenteArray As String()
+    Dim descripcionComponenteString As String
+    Dim codigosComponenteArray As String()
+    Dim cantidadComponenteInteger As Integer
+    Dim componenteFinalArray() = {}
+    Dim paqueteFinalArray() = {}
+    Dim componentesFinalArray() = {}
+    Dim paquetesFinalArray() = {}
+    Dim test As Integer
+
+    Function preparePaquetes(ByRef paquetesReadedFile As String)
+        Dim arrayPaquetes As String() = paquetesReadedFile.Split(";")
+
+        For i = 0 To arrayPaquetes.Length - 1
+
+            arrayPaquetes(i) = arrayPaquetes(i).Replace(vbCr, "").Replace(vbLf, "").Replace(vbTab, "")
+            configPaqueteString = Strings.Left(arrayPaquetes(i), arrayPaquetes(i).IndexOf("#"))
+            componentesPaqueteString = Strings.Right(arrayPaquetes(i), arrayPaquetes(i).Length - arrayPaquetes(i).IndexOf("#"))
+
+
+            configPaqueteArray = configPaqueteString.Split(",")
+
+            ReDim paqueteFinalArray(3)
+            paqueteFinalArray(0) = configPaqueteArray(0)
+            paqueteFinalArray(1) = configPaqueteArray(1).Trim.Split("|")
+            paqueteFinalArray(2) = Convert.ToInt32(configPaqueteArray(2))
+
+
+            componentesPaqueteArray = componentesPaqueteString.Trim("#").Split("#")
+
+            componentesFinalArray = {}
+            For j = 0 To componentesPaqueteArray.Length - 1
+                componenteArray = componentesPaqueteArray(j).Split(",")
+
+                ReDim componenteFinalArray(2)
+                componenteFinalArray(0) = componenteArray(0)
+                componenteFinalArray(1) = componenteArray(1).Trim.Split("|")
+                componenteFinalArray(2) = Convert.ToInt32(componenteArray(2))
+
+                ReDim Preserve componentesFinalArray(componentesFinalArray.Length)
+                componentesFinalArray(componentesFinalArray.Length - 1) = componenteFinalArray
+            Next
+
+            paqueteFinalArray(3) = componentesFinalArray
+
+            ReDim Preserve paquetesFinalArray(paquetesFinalArray.Length)
+            paquetesFinalArray(paquetesFinalArray.Length - 1) = paqueteFinalArray
+
+
+        Next
+
+        Return paquetesFinalArray
+
+    End Function
     Function fillComboBox(ByVal paquetes())
         ComboBox1.MaxDropDownItems = paquetes.Length
         Dim dropdown_content() = {}
@@ -424,7 +493,7 @@ Public Class Form1
 
         For x = 0 To UBound(listaDeCodigos)
             If listaDeCodigos(x).Contains(".RC") Then
-                Dim codigo = listaDeCodigos(x).Remove(listaDeCodigos(x).LastIndexOf("/"))
+                Dim codigo As String = listaDeCodigos(x).Remove(listaDeCodigos(x).LastIndexOf("/"))
                 If Array.IndexOf(paquete(1), codigo) < 0 Then
                     Return True
                 End If
@@ -560,7 +629,9 @@ Public Class Form1
     End Function
 
     Sub Form1_Load() Handles MyBase.Load
-        fillComboBox(listado_de_paquetes)
+
+        array_paquetes = preparePaquetes(listado_de_paquetes)
+        fillComboBox(array_paquetes)
     End Sub
 
     Sub Button1_Click() Handles Button1.Click
@@ -573,7 +644,7 @@ Public Class Form1
         TextBox1.Text = cleanLine(TextBox1.Text)
         Dim linea As String() = Split(TextBox1.Text, vbCrLf)
 
-        For Each element In listado_de_paquetes
+        For Each element In array_paquetes
             If element(0) = ComboBox1.Text Then
                 Dim mensajeFinal As String = ""
 
