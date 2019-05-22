@@ -346,7 +346,7 @@ Public Class Form1
     End Function
 
     Sub Form1_Load() Handles MyBase.Load
-        Dim listado_de_paquetes As String = File.ReadAllText(".\listado_paquetes.txt")
+        Dim listado_de_paquetes As String = File.ReadAllText(".\Roadcase Creator Database.txt")
         array_paquetes = PreparePaquetes(listado_de_paquetes)
         FillComboBox(array_paquetes)
     End Sub
