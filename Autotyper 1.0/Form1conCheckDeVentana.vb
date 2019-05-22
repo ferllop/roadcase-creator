@@ -14,12 +14,10 @@ Public Class Form1
     Private Shared Function GetWindowTextW(<InAttribute()> ByVal hWnd As IntPtr, <OutAttribute(), MarshalAs(UnmanagedType.LPWStr)> ByVal lpString As StringBuilder, ByVal nMaxCount As Integer) As Integer
     End Function
 
-    Dim windowError As Boolean
-    Dim paraloTodo As Boolean
-    Dim listado_de_paquetes As String = File.ReadAllText(".\listado_paquetes.txt")
     Dim array_paquetes() = {}
 
-    Function preparePaquetes(ByRef paquetesReadedFile As String)
+    Function PreparePaquetes(ByRef paquetesReadedFile As String)
+
         Dim paquetesFinalArray() = {}
         Dim arrayPaquetes As String() = paquetesReadedFile.Split(";")
 
@@ -61,7 +59,7 @@ Public Class Form1
         Return paquetesFinalArray
 
     End Function
-    Function fillComboBox(ByVal paquetes())
+    Function FillComboBox(ByVal paquetes())
         ComboBox1.MaxDropDownItems = paquetes.Length
         Dim dropdown_content() = {}
 
@@ -86,17 +84,14 @@ Public Class Form1
         Loop
         Return True
     End Function
-    Function cleanLines(ByVal inputText As String) As String
-        inputText = Replace(inputText, vbTab, "")
-        inputText = Replace(inputText, " ", "")
-        inputText = Replace(inputText, vbCrLf & vbCrLf, vbCrLf)
-        inputText = inputText.Trim(vbCrLf.ToCharArray)
-        Return inputText
+    Function CleanLines(ByVal inputText As String) As String
+        Return inputText.Replace(vbTab, "").Replace(" ", "").Replace(vbLf, vbCr).Replace(vbCr & vbCr & vbCr, vbCr).Replace(vbCr & vbCr, vbCr).Replace(vbCr, vbCrLf).Trim(vbCrLf.ToCharArray)
     End Function
-    Function focoRoadcase()
-        paraloTodo = False
-        windowError = True
-        While windowError And Not paraloTodo
+    Function FocoRoadcase()
+        'aqui
+        'paraloTodo = False
+        'windowError = True
+        While True
             Dim hWnd As IntPtr = GetForegroundWindow()
             If Not hWnd.Equals(IntPtr.Zero) Then
                 Dim lgth As Integer = GetWindowTextLength(hWnd)
@@ -114,31 +109,22 @@ Public Class Form1
                     wFileName = ""
                 End Try
                 If wTitle.ToString = "Pack a Road case" Then
-                    windowError = False
+                    Return True
                 Else
-                    windowError = True
-                    Dim msg2 As String
-                    Dim title2 As String
-                    Dim style2 As MsgBoxStyle
-                    Dim response2 As MsgBoxResult
-                    msg2 = "La ventana 'Pack a Road case' no quedó seleccionada." & vbNewLine & "Selecciona la ventana 'Pack a Road case' y clicka 'YES'." & vbNewLine & "Selecciona NO para parar el proceso."   ' Define message.
-                    style2 = MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.YesNo
-                    title2 = "¡¡¡La ventana perdió el foco!!!"   ' Define title.
-                    ' Display message.
-                    response2 = MsgBox(msg2, style2, title2)
+                    Dim response2 As MsgBoxResult = MsgBox("La ventana 'Pack a Road case' no quedó seleccionada." & vbNewLine & "Selecciona la ventana 'Pack a Road case' y clicka 'YES'." & vbNewLine & "Selecciona NO para parar el proceso.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.YesNo, "¡¡¡La ventana perdió el foco!!!")
                     If response2 = MsgBoxResult.No Then
-                        paraloTodo = True
+                        Return False
                     End If
                 End If
             End If
         End While
-        Return windowError
+        Return ""
     End Function
     Function WarningWindow()
-        paraloTodo = False
-        windowError = True
-        While windowError And Not paraloTodo
-            Dim hWnd As IntPtr = GetForegroundWindow()
+
+        Dim windowError As Boolean = True
+        'While windowError
+        Dim hWnd As IntPtr = GetForegroundWindow()
             If Not hWnd.Equals(IntPtr.Zero) Then
                 Dim lgth As Integer = GetWindowTextLength(hWnd)
                 Dim wTitle As New System.Text.StringBuilder("", lgth + 1)
@@ -154,18 +140,17 @@ Public Class Form1
                 Catch ex As Exception
                     wFileName = ""
                 End Try
-                If wTitle.ToString = "Information" Then
-                    windowError = True
-                    paraloTodo = True
-                Else
-                    paraloTodo = False
-                    windowError = False
-                End If
+            If wTitle.ToString = "Information" Then
+                Return True
             End If
-        End While
-        Return windowError
+
+            Return False
+
+        End If
+        'End While
+        Return True
     End Function
-    Function volcado()
+    Function Volcado()
         Dim okroadcase As String = "+{TAB 2}{ENTER}"
         Dim nuevoroadcase As String = "{HOME}{DOWN}{TAB}{ENTER}{TAB 2}{ENTER}"
         Dim tick As String = "{Enter}{TAB}{RIGHT} {LEFT 2}"
@@ -179,8 +164,7 @@ Public Class Form1
 
         Wait(5)
 
-        focoRoadcase()
-        If Not windowError Then
+        If FocoRoadcase() Then
             For i = 0 To UBound(lineaRaw)
                 If Not String.IsNullOrEmpty(lineaRaw(i)) And Not lineaRaw(i) = vbCrLf Then
                     textSinEspacios += lineaRaw(i) & vbCrLf
@@ -200,23 +184,16 @@ Public Class Form1
                         If linea(i + 1).Contains(".RC") Then
                             SendKeys.Send(linea(i) & "{Enter}")
                             Wait(0.2)
-                            WarningWindow()
-                            If paraloTodo And windowError Then
+
+                            If WarningWindow() Then
                                 Return False
                                 Exit For
                             End If
-                            Dim msg As String
-                            Dim title As String
-                            Dim style As MsgBoxStyle
-                            Dim response As MsgBoxResult
-                            msg = "Roadcase completo." & vbNewLine & "Si seleccionas 'YES' el proceso continuará." & vbNewLine & "Si seleccionas NO el proceso finalizará y deberás repasar lo que se pueda haber quedado a medias."   ' Define message.
-                            style = MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.YesNo
-                            title = "Roadcase completo"   ' Define title.
-                            ' Display message.
-                            response = MsgBox(msg, style, title)
-                            If response = MsgBoxResult.Yes Then   ' User chose Yes.
-                                focoRoadcase()
-                                If paraloTodo And windowError Then
+
+                            Dim response As MsgBoxResult = MsgBox("Roadcase completo." & vbNewLine & "Si seleccionas 'YES' el proceso continuará." & vbNewLine & "Si seleccionas NO el proceso finalizará y deberás repasar lo que se pueda haber quedado a medias.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.YesNo, "Roadcase completo")
+                            If response = MsgBoxResult.Yes Then
+
+                                If Not FocoRoadcase() Then
                                     Exit For
                                 Else
                                     SendKeys.Send(okroadcase & "{Enter}")
@@ -229,8 +206,8 @@ Public Class Form1
                         Else
                             SendKeys.Send(linea(i) & "{Enter}")
                             Wait(0.2)
-                            WarningWindow()
-                            If paraloTodo And windowError Then
+
+                            If WarningWindow() Then
                                 Return False
                                 Exit For
                             End If
@@ -249,7 +226,7 @@ Public Class Form1
         End If
     End Function
 
-    Function tipo_de_paquete_erroneo(ByRef listaDeCodigos, ByRef paquete)
+    Function Tipo_de_paquete_erroneo(ByRef listaDeCodigos, ByRef paquete)
 
 
         Dim x As Integer = 0
@@ -266,7 +243,7 @@ Public Class Form1
 
         Return False
     End Function
-    Function cantidad_de_paquetes_erronea(ByRef listaDeCodigos, ByRef paquete)
+    Function Cantidad_de_paquetes_erronea(ByRef listaDeCodigos, ByRef paquete)
 
         Dim h As Integer = 0
         Dim x As Integer = 0
@@ -289,13 +266,13 @@ Public Class Form1
 
         Return errorRC
     End Function
-    Function primer_codigo_es_de_caja(ByRef listaDeCodigos As String()) As Boolean
+    Function Primer_codigo_es_de_caja(ByRef listaDeCodigos As String()) As Boolean
         If Not listaDeCodigos(0).Contains(".RC") Then
             Return True
         End If
         Return False
     End Function
-    Function listado_codigos_duplicados(ByRef listaDeCodigos As String()) As String
+    Function Listado_codigos_duplicados(ByRef listaDeCodigos As String()) As String
         Dim codigosDuplicados As String = ""
 
         Dim h As Integer = 0
@@ -313,7 +290,7 @@ Public Class Form1
         Next h
         Return codigosDuplicados
     End Function
-    Function listado_componentes_erroneos(ByRef listaDeCodigos, ByRef codigosCaja, ByRef contenido())
+    Function Listado_componentes_erroneos(ByRef listaDeCodigos, ByRef codigosCaja, ByRef contenido())
         Dim errComp As String = ""
         Dim i As Integer = 0
 
@@ -336,7 +313,7 @@ Public Class Form1
 
         Return errComp
     End Function
-    Function cantidades_cajas(ByRef listaDeCodigos)
+    Function Cantidades_cajas(ByRef listaDeCodigos)
         Dim cajasQueHay As Integer = 0
 
         For h = 0 To UBound(listaDeCodigos)
@@ -347,8 +324,8 @@ Public Class Form1
 
         Return cajasQueHay
     End Function
-    Function listado_cantidades_contenido_incorrectas(ByRef listaDeCodigos, ByRef codigosCaja, ByRef contenido())
-        Dim cajasQueHay As Integer = cantidades_cajas(listaDeCodigos)
+    Function Listado_cantidades_contenido_incorrectas(ByRef listaDeCodigos, ByRef codigosCaja, ByRef contenido())
+        Dim cajasQueHay As Integer = Cantidades_cajas(listaDeCodigos)
         Dim productosQueHay() = {}
         Dim productoHayPorPaquete As Integer = 0
         Dim productos_incorrectos() = {}
@@ -392,13 +369,13 @@ Public Class Form1
     End Function
 
     Sub Form1_Load() Handles MyBase.Load
-
-        array_paquetes = preparePaquetes(listado_de_paquetes)
-        fillComboBox(array_paquetes)
+        Dim listado_de_paquetes As String = File.ReadAllText(".\listado_paquetes.txt")
+        array_paquetes = PreparePaquetes(listado_de_paquetes)
+        FillComboBox(array_paquetes)
     End Sub
 
     Sub Button1_Click() Handles Button1.Click
-        TextBox1.Text = cleanLines(TextBox1.Text)
+        TextBox1.Text = CleanLines(TextBox1.Text)
         Dim linea As String() = Split(TextBox1.Text, vbCrLf)
 
         For Each element In array_paquetes
@@ -406,13 +383,13 @@ Public Class Form1
                 Dim mensajeFinal As String = ""
 
                 If mensajeFinal = "" Then
-                    If tipo_de_paquete_erroneo(linea, element) Then
+                    If Tipo_de_paquete_erroneo(linea, element) Then
                         mensajeFinal += "Se ha encontrado algun paquete que no es de " & element(0) & vbNewLine & vbNewLine
                     End If
                 End If
 
                 If mensajeFinal = "" Then
-                    Dim duplicados = listado_codigos_duplicados(linea)
+                    Dim duplicados = Listado_codigos_duplicados(linea)
                     If Not duplicados = "" Then
                         mensajeFinal += "Los siguientes códigos aparecen más de una vez:  " & vbNewLine & duplicados & vbNewLine & vbNewLine
                     End If
@@ -420,19 +397,19 @@ Public Class Form1
 
 
                 If mensajeFinal = "" Then
-                    If cantidad_de_paquetes_erronea(linea, element) Then
+                    If Cantidad_de_paquetes_erronea(linea, element) Then
                         mensajeFinal += "No puedes hacer más de " & element(2) & " paquetes de " & element(0) & " de golpe." & vbNewLine & vbNewLine
                     End If
                 End If
 
                 If mensajeFinal = "" Then
-                    If primer_codigo_es_de_caja(linea) Then
+                    If Primer_codigo_es_de_caja(linea) Then
                         mensajeFinal += "El primer código del paquete tiene que ser el de la caja" & vbNewLine & vbNewLine
                     End If
                 End If
 
                 If mensajeFinal = "" Then
-                    Dim componentes_erroneos As String = listado_componentes_erroneos(linea, element(1), element(3))
+                    Dim componentes_erroneos As String = Listado_componentes_erroneos(linea, element(1), element(3))
                     If Not componentes_erroneos = "" Then
                         mensajeFinal += "Los siguientes códigos no deben ir en un paquete de " & ComboBox1.Text & ":" & vbNewLine & componentes_erroneos & vbNewLine & vbNewLine
                     End If
@@ -442,7 +419,7 @@ Public Class Form1
 
                 If mensajeFinal = "" Then
                     Dim productos_con_cantidades_erroneas() = {}
-                    productos_con_cantidades_erroneas = listado_cantidades_contenido_incorrectas(linea, element(1), element(3))
+                    productos_con_cantidades_erroneas = Listado_cantidades_contenido_incorrectas(linea, element(1), element(3))
                     If productos_con_cantidades_erroneas.Length > 0 Then
                         For Each producto_con_cantidad_erronea In productos_con_cantidades_erroneas
                             mensajeFinal += "En algún paquete de " & element(0) & " la cantidad de " & producto_con_cantidad_erronea(0) & " difiere de " & producto_con_cantidad_erronea(2) & vbNewLine
@@ -454,7 +431,7 @@ Public Class Form1
 
                 If mensajeFinal = "" Then
                     MsgBox("Después de darle al OK tendrás 5 segundos para seleccionar la ventana 'Pack a Road case'")
-                    'volcado()
+                    Volcado()
                 Else
                     MsgBox(mensajeFinal & vbNewLine & "Repasa los códigos.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.Information, "Hay errores")
                 End If
@@ -463,7 +440,6 @@ Public Class Form1
         Next
 
     End Sub
-
 
 End Class
 
