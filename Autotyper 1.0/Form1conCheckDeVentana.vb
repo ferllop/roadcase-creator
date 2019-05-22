@@ -87,10 +87,7 @@ Public Class Form1
     Function CleanLines(ByVal inputText As String) As String
         Return inputText.Replace(vbTab, "").Replace(" ", "").Replace(vbLf, vbCr).Replace(vbCr & vbCr & vbCr, vbCr).Replace(vbCr & vbCr, vbCr).Replace(vbCr, vbCrLf).Trim(vbCrLf.ToCharArray)
     End Function
-    Function FocoRoadcase()
-        'aqui
-        'paraloTodo = False
-        'windowError = True
+    Function WindowByTitleCorrectlyFocused(ByVal windowTitle As String)
         While True
             Dim hWnd As IntPtr = GetForegroundWindow()
             If Not hWnd.Equals(IntPtr.Zero) Then
@@ -108,47 +105,19 @@ Public Class Form1
                 Catch ex As Exception
                     wFileName = ""
                 End Try
-                If wTitle.ToString = "Pack a Road case" Then
+                If wTitle.ToString.Contains(windowTitle) And Not wTitle.ToString.Contains("Inventory Setup") Then
                     Return True
                 Else
-                    Dim response2 As MsgBoxResult = MsgBox("La ventana 'Pack a Road case' no quedó seleccionada." & vbNewLine & "Selecciona la ventana 'Pack a Road case' y clicka 'YES'." & vbNewLine & "Selecciona NO para parar el proceso.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.YesNo, "¡¡¡La ventana perdió el foco!!!")
-                    If response2 = MsgBoxResult.No Then
+                    Dim response As MsgBoxResult = MsgBox("La ventana 'Pack a Road case' no quedó seleccionada." & vbNewLine & "Selecciona la ventana 'Pack a Road case' y clicka 'YES'." & vbNewLine & "Selecciona NO para parar el proceso.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.YesNo, "¡¡¡La ventana perdió el foco!!!")
+                    If response = MsgBoxResult.No Then
                         Return False
                     End If
                 End If
             End If
         End While
-        Return ""
-    End Function
-    Function WarningWindow()
 
-        Dim windowError As Boolean = True
-        'While windowError
-        Dim hWnd As IntPtr = GetForegroundWindow()
-            If Not hWnd.Equals(IntPtr.Zero) Then
-                Dim lgth As Integer = GetWindowTextLength(hWnd)
-                Dim wTitle As New System.Text.StringBuilder("", lgth + 1)
-                If lgth > 0 Then
-                    GetWindowTextW(hWnd, wTitle, wTitle.Capacity)
-                End If
-                Dim wProcID As Integer = Nothing
-                GetWindowThreadProcessId(hWnd, wProcID)
-                Dim Proc As Process = Process.GetProcessById(wProcID)
-                Dim wFileName As String = ""
-                Try
-                    wFileName = Proc.MainModule.FileName
-                Catch ex As Exception
-                    wFileName = ""
-                End Try
-            If wTitle.ToString = "Information" Then
-                Return True
-            End If
+        Return False
 
-            Return False
-
-        End If
-        'End While
-        Return True
     End Function
     Function Volcado()
         Dim okroadcase As String = "+{TAB 2}{ENTER}"
@@ -164,7 +133,7 @@ Public Class Form1
 
         Wait(5)
 
-        If FocoRoadcase() Then
+        If WindowByTitleCorrectlyFocused("Pack a Road case") Then
             For i = 0 To UBound(lineaRaw)
                 If Not String.IsNullOrEmpty(lineaRaw(i)) And Not lineaRaw(i) = vbCrLf Then
                     textSinEspacios += lineaRaw(i) & vbCrLf
@@ -178,38 +147,46 @@ Public Class Form1
                     SendKeys.Send(linea(i) & "{Enter}")
                 Else
                     If linea(i).Contains(".RC") Then
-                        SendKeys.Send(linea(i))
-                        SendKeys.Send(tick)
+                        If Not WindowByTitleCorrectlyFocused("Pack a Road") Then
+                            Exit For
+                        Else
+                            SendKeys.Send(linea(i))
+                            SendKeys.Send(tick)
+                        End If
                     Else
                         If linea(i + 1).Contains(".RC") Then
-                            SendKeys.Send(linea(i) & "{Enter}")
-                            Wait(0.2)
-
-                            If WarningWindow() Then
-                                Return False
+                            If Not WindowByTitleCorrectlyFocused("Pack a Road") Then
                                 Exit For
+                            Else
+                                SendKeys.Send(linea(i) & "{Enter}")
+                                Wait(0.2)
                             End If
+
 
                             Dim response As MsgBoxResult = MsgBox("Roadcase completo." & vbNewLine & "Si seleccionas 'YES' el proceso continuará." & vbNewLine & "Si seleccionas NO el proceso finalizará y deberás repasar lo que se pueda haber quedado a medias.", MsgBoxStyle.MsgBoxSetForeground & MsgBoxStyle.YesNo, "Roadcase completo")
                             If response = MsgBoxResult.Yes Then
 
-                                If Not FocoRoadcase() Then
+                                If Not WindowByTitleCorrectlyFocused("Pack a Road") Then
                                     Exit For
                                 Else
                                     SendKeys.Send(okroadcase & "{Enter}")
                                     Wait(2)
+                                End If
+                                If Not WindowByTitleCorrectlyFocused("RentalPoint") Then
+                                    Exit For
+                                Else
                                     SendKeys.Send(nuevoroadcase)
+                                    Wait(0.5)
                                 End If
                             Else
                                 Exit For
                             End If
                         Else
-                            SendKeys.Send(linea(i) & "{Enter}")
-                            Wait(0.2)
-
-                            If WarningWindow() Then
-                                Return False
+                            If Not WindowByTitleCorrectlyFocused("Pack a Road") Then
                                 Exit For
+                            Else
+                                SendKeys.Send(linea(i) & "{Enter}")
+                                Wait(0.2)
                             End If
                         End If
                     End If
