@@ -273,7 +273,11 @@ Public Class Form1
 
         For i = 0 To UBound(listaDeCodigos)
             If Not listaDeCodigos(i).contains(".RC") Then
-                Dim codigo = listaDeCodigos(i).remove(listaDeCodigos(i).LastIndexOf("/"))
+                Dim codigo = listaDeCodigos(i)
+                If codigo.contains("/") Then
+                    codigo = listaDeCodigos(i).remove(listaDeCodigos(i).LastIndexOf("/"))
+                End If
+
                 Dim found As Boolean = False
 
                 For Each product In contenido
@@ -313,7 +317,11 @@ Public Class Form1
         Next
         For i = 0 To UBound(listaDeCodigos)
 
-            Dim codigo = listaDeCodigos(i).remove(listaDeCodigos(i).LastIndexOf("/"))
+            Dim codigo = listaDeCodigos(i)
+            If codigo.contains("/") Then
+                codigo = listaDeCodigos(i).remove(listaDeCodigos(i).LastIndexOf("/"))
+            End If
+
             If Array.IndexOf(codigosCaja, codigo) < 0 Then
 
                 For Each producto In contenido
