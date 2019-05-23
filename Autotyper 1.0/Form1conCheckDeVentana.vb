@@ -29,10 +29,18 @@ Public Class Form1
 
             Dim configPaqueteArray As String() = configPaqueteString.Split(",")
 
+
             Dim paqueteFinalArray(3)
-            paqueteFinalArray(0) = configPaqueteArray(0).Trim 'Descripción paquete
             paqueteFinalArray(1) = configPaqueteArray(1).Replace(" ", "").ToUpper().Split("|") 'Códigos paquete
             paqueteFinalArray(2) = Convert.ToInt32(configPaqueteArray(2)) 'Limite paquetes
+
+            Dim prepareShowLimiteLotes As String
+            If paqueteFinalArray(2) = 0 Then
+                prepareShowLimiteLotes = " (ilimitado)"
+            Else
+                prepareShowLimiteLotes = " (" & configPaqueteArray(2).Trim & ")"
+            End If
+            paqueteFinalArray(0) = configPaqueteArray(0).Trim & prepareShowLimiteLotes  'Descripción paquete
 
             Dim componentesPaqueteArray As String() = componentesPaqueteString.Trim("#").Split("#")
 
