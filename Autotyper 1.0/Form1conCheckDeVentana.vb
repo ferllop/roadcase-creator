@@ -227,6 +227,10 @@ Public Class Form1
         Dim y As Integer = 0
         Dim errorRC As Boolean = False
 
+        If paquete(2) = 0 Then
+            Return False
+        End If
+
         For x = 0 To UBound(listaDeCodigos)
             If listaDeCodigos(x).Contains(".RC") Then
                 Dim codigo = listaDeCodigos(x).Remove(listaDeCodigos(x).LastIndexOf("/"))
