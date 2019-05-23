@@ -340,7 +340,7 @@ Public Class Form1
                     If Array.IndexOf(producto(1), codigo) > -1 Then
 
                         Dim found As Boolean = False
-                        If productosQueHay.Length > 0 Then
+                        If productosQueHay.Length > 0 And producto(2) > 0 Then
                             For j = 0 To productosQueHay.Length - 1
                                 If producto(0) = productosQueHay(j)(0) Then
                                     productosQueHay(j)(1) += 1
