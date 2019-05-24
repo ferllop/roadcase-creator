@@ -1,0 +1,198 @@
+/*
+
+ *********************************
+ *                               *                      
+ *   ROADCASE CREATOR DATABASE   *
+ *                               *
+ *     by Ferran since 2017      *
+ *                               *
+ ********************************* 
+
+
+La declaracion de un paquete ha de tener obligatoriamente el siguiente aspecto:
+
+Descripcion del paquete, codigos de la caja, limite de paquetes
+	#Descripcion contenido A en plural, barcodes contenido A, cantidad contenido A
+	#Descripcion contenido B en plural, barcodes contenido B, cantidad contenido B
+;
+
+
+Puntos importantes:
+	-La primera linea es para las caracteristicas del paquete y 
+	 las siguientes para las caracteristicas del contenido.
+
+	-Cada linea de un contenido ha de comenzar por hashtag (#).
+
+	-La descripcion del contenido se usa en los mensajes de error 
+	 del Roadcase Creator. 
+	 Para que estos mensajes queden con sentido, usar el plural, 
+	 y para que destaquen en el mensaje, escribirlos en mayuscula.
+	
+	-Si una caja o un contenido puede tener varios codigos, se separan con pipe (|). 
+	 Por ejemplo, el paquete de parleds acepta distintos tipos de parled, 
+	 pudiendo tener los codigos PARPL/XX, PARSHL/XX o PARUV/XX, 
+	 por lo tanto, en la declaracion, los codigos quedarian asi: 
+	 PARPL|PARSHL|PARUV
+	
+	-Cada declaracion de un paquete ha de terminar con punto y coma (;)
+	
+	-En la declaracion de limite de paquetes o de cantidad de un contenido, 
+	 si ponemos 0, quiere decir cantidad ilimitada.
+
+	-Se pueden comentar bloques de texto para que no tengan efecto (como si no estuviesen). 
+	 Se empieza un comentario con barra (/) y asterisco (*) todo junto 
+	 y se cierra con asterisco (*) y barra (/) todo junto.
+	 Este bloque de comentario sirve de ejemplo.
+
+Hale, un saludo!!
+
+Comienza la declaracion de paquetes
+*/
+
+Absen, A3.RC, 6
+	#TILES ABSEN, SPA3, 6
+;
+Absen Back Support, A3BS.RC, 6
+	#BACK SUPPORTS, A3BS|A3PBS1, 6
+	#BANDEJAS DE 1m, A3TRAY|A3PBT, 3
+;
+Absen Ground Beam 1 x 1.5m + 2 x 1m, A3GB1.RC, 4
+	#GROUND BEAM DE 1.5m, A3GB1.5, 1
+	#GROUND BEAM DE 1m, A3GB1, 2
+	#OUTRIGGERS, A3OUT, 4
+;
+Absen Ground Beam 2 x 2m, A3GB2.RC, 4
+	#GROUND BEAM DE 2m, A3GB2, 2
+	#OUTRIGGERS, A3OUT, 4
+;
+21K, 21K.RC, 4
+	#PROYECTORES DE 21K, PAN21K, 1
+	#MANDOS CON HDMI PARA PROYECTOR PANASONIC, RCPANMI|RCPAN, 1
+	#RENTAL FRAME PARA 21K, RF21K, 1
+	#CONVERSORES SCHUKO A 16A MONOFÁSICO, SK16, 1
+;
+13K, 13K.RC, 4
+	#PROYECTORES DE 13K, PAN13K, 1
+	#MANDOS CON HDMI PARA PROYECTOR PANASONIC, RCPANMI|RCPAN, 1
+	#RENTAL FRAME PARA 13K, RF13K, 1
+;
+10K, 10K.RC, 4
+	#PROYECTORES DE 10K, PAN10K, 1
+	#MANDOS CON HDMI PARA PROYECTOR PANASONIC, RCPANMI|RCPAN, 1
+	#RENTAL FRAME PARA 10K, RF10K, 1
+;
+8.5K, 8K.RC, 4
+	#PROYECTORES DE 8.5K, PT870, 1
+	#MANDOS CON HDMI PARA PROYECTOR PANASONIC, RCPANMI|RCPAN, 1
+	#RENTAL FRAME PARA 8K, RF8K, 1
+;
+85 pulgadas Mate o Brillo, 85.RC, 4
+	#DISPLAYS DE 85 PULGADAS, QM85D|QM85NMAT, 1
+	#MANDOS A DISTANCIA PARA DISPLAY SAMSUNG, SRC1, 1
+;
+80 pulgadas, 80.RC, 4
+	#DISPLAYS DE 80 PULGADAS, SHARP80, 1
+	#MANDOS A DISTANCIA PARA DISPLAY DE 80 PULGADAS, HRC, 1
+	#SOPORTES PARA DISPLAY DE 80 PULGADAS, SOP80, 1
+	#LLAVES ALLEN PARA EL SOPORTE DE DISPLAY DE 80 PULGADAS, 80KEY, 1
+;
+1 x 65 pulgadas, 1U65.RC, 4
+	#DISPLAYS DE 65 PULGADAS, QM65H, 1
+	#MANDOS A DISTANCIA PARA DISPLAY SAMSUNG, SRC1, 1
+;
+2 x 65 pulgadas, 2U65.RC, 4
+	#DISPLAYS DE 65 PULGADAS, QM65H, 2
+	#MANDOS A DISTANCIA PARA DISPLAY SAMSUNG, SRC1, 1
+;
+3 x 65 pulgadas, 3U65.RC, 4
+	#DISPLAYS DE 65 PULGADAS, QM65H, 3
+	#MANDOS A DISTANCIA PARA DISPLAY SAMSUNG, SRC1, 1
+;
+2 x 55 pulgadas 4K QM55H, 2QM55H.RC, 4
+	#DISPLAYS DE 55 PULGADAS QM55H, QM55H, 2
+	#MANDOS A DISTANCIA PARA DISPLAY SAMSUNG, SRC1, 1
+;
+3 x 55 pulgadas 4K QM55H, 3QM55H.RC, 4
+	#DISPLAYS DE 55 PULGADAS QM55H, QM55H, 3
+	#MANDOS A DISTANCIA PARA DISPLAY SAMSUNG, SRC1, 1
+;
+2 x 55 pulgadas ME55C, 2ME55C.RC, 4
+	#DISPLAYS DE 55 PULGADAS ME55C, ME55C, 2
+	#MANDOS A DISTANCIA PARA DISPLAY SAMSUNG, SRC1, 1
+;
+2 x 55 pulgadas DB55D, 2DB55D.RC, 4
+	#DISPLAYS DE 55 PULGADAS DB55D, DB55D, 2
+	#MANDOS A DISTANCIA PARA DISPLAY SAMSUNG, SRC1, 1
+;
+2 x 49 pulgadas QB49N, 2QB49N.RC, 4
+	#DISPLAYS DE 49 PULGADAS QB49N, QB49N, 2
+	#MANDOS A DISTANCIA PARA DISPLAY SAMSUNG, SRC1, 1
+;
+3 x 49 pulgadas QB49N, 3QB49N.RC, 4
+	#DISPLAYS DE 49 PULGADAS QB49N, QB49N, 3
+	#MANDOS A DISTANCIA PARA DISPLAY SAMSUNG, SRC1, 1
+;
+1 x 48 pulgadas DB48E, 1DB48E.RC, 4
+	#DISPLAYS DE 48 PULGADAS DB48E, DB48E, 1
+	#MANDOS A DISTANCIA PARA DISPLAY SAMSUNG, SRC1, 1
+;
+2 x 48 pulgadas DB48E, 2DB48E.RC, 4
+	#DISPLAYS DE 48 PULGADAS DB48E, DB48E, 2
+	#MANDOS A DISTANCIA PARA DISPLAY SAMSUNG, SRC1, 1
+;
+2 x 46 pulgadas ME46C, 2ME46C.RC, 4
+	#DISPLAYS DE 46 PULGADAS DB48E, ME46C, 2
+	#MANDOS A DISTANCIA PARA DISPLAY SAMSUNG, SRC1, 1
+;
+Clevertouch 55 pulgadas, CLEV55.RC, 4
+	#CLEVERTOUCH 55 PULGADAS, CLEV55P, 2
+	#MANDOS A DISTANCIA PARA CLEVERTOUCH 55 PULGADAS, CLEVERC, 2
+	#PUNTEROS PARA CLEVERTOUCH 55 PULGADAS, RUBPEN, 2
+	#CABLES USB PARA CLEVERTOUCH 55 PULGADAS, CLUS, 2
+	#ANTENAS PARA CLEVERTOUCH 55 PULGADAS, 2458G, 2
+;
+NEC X55, X55.RC, 6
+	#DISPLAY NEC X55, X55, 2
+	#MALETIN PARA X55, X55AS, 2
+	#EASYFRAME FRAME PARA X555UNS, X55FR, 2
+	#STACKER FRAME PARA X555UNS, X55SF, 2
+	#EASYFRAME DOUBLE MAGNETIC HOLDER, 2M, 2
+	#EASYFRAME QUADRUPLE MAGNETIC HOLDER, 4M, 2
+;
+4 x T10, 4T10.RC, 8
+	#D&B T10, T10, 4
+;
+MAUI, 2G2.RC, 4
+	#SUBGRAVES MAUI, G2SUB, 2
+	#TOP INFERIOR MAUI, G2LTOP, 2
+	#TOP SUPERIOR MAUI, G2UTOP, 2
+;
+QL5, QL5.RC, 4
+	#YAMAHA QL5, YQL548, 1
+;
+Axiom, AX.RC, 6
+	#MARTIN MAC AXIOM, AXIOM, 2
+;
+MAC700, 700.RC, 6
+	#MARTIN MAC 700, MAC700, 2
+;
+Z8 Strip, Z8.RC, 4
+	#BARRAS Z8, Z8STRIP, 6
+;
+Socapex, SPX.RC, 1
+	#SOCAPEX DE 20m, PB20|SCPX20, 4
+	#SOCAPEX DE 10m, PB10|SCPX10, 4
+	#SOCAPEX DE 5m, PB05|SCPX05, 4
+	#PULPOS SOCAPEX MACHO, SPXM|SCPXM, 4
+	#PULPOS SOCAPEX HEMBRA, SPXF|SCPXF, 2
+	#CAJETINES HEMBRA, SPX2SK, 2
+;
+6 x Par Led, 6PAR.RC, 6
+	#PARLEDS, PARPL|PARSHL|PARUV, 6
+;
+8 x Par Led, 8PAR.RC, 6
+	#PARLEDS, PARPL|PARSHL|PARUV, 8
+;
+6 x ClayPaky, CPUP.RC, 6
+	#CLAY PAKYS, CPUP, 6
+;
