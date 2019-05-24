@@ -16,10 +16,28 @@ Public Class Form1
 
     Dim array_paquetes() = {}
 
+    Function RemoveComments(ByRef str As String)
+        Dim openComment As String = "/*"
+        Dim closeComment As String = "*/"
+
+        Dim result As String = str
+
+        While result.Contains(openComment) And result.Contains(closeComment)
+            Dim indexOfOpen As Integer = result.IndexOf(openComment)
+            Dim indexOfClose As Integer = result.IndexOf(closeComment, indexOfOpen) + closeComment.Length
+
+            result = result.Substring(0, indexOfOpen) & result.Substring(indexOfClose)
+        End While
+
+        Return result
+
+    End Function
+
+
     Function PreparePaquetes(ByRef paquetesReadedFile As String)
 
         Dim paquetesFinalArray() = {}
-        Dim arrayPaquetes As String() = paquetesReadedFile.Trim(";").Split(";")
+        Dim arrayPaquetes As String() = RemoveComments(paquetesReadedFile).Trim(";").Split(";")
 
         For i = 0 To arrayPaquetes.Length - 1
 
