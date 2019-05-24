@@ -16,7 +16,7 @@ Public Class Form1
 
     Dim array_paquetes() = {}
 
-    Function RemoveComments(ByRef str As String)
+    Function RemoveComments(ByVal str As String)
         Dim openComment As String = "/*"
         Dim closeComment As String = "*/"
 
@@ -37,11 +37,9 @@ Public Class Form1
     Function PreparePaquetes(ByRef paquetesReadedFile As String)
 
         Dim paquetesFinalArray() = {}
-        Dim arrayPaquetes As String() = RemoveComments(paquetesReadedFile).Trim(";").Split(";")
+        Dim arrayPaquetes As String() = RemoveComments(paquetesReadedFile).Replace(vbCr, "").Replace(vbLf, "").Replace(vbTab, "").Replace("/*", "").Replace("*/", "").Trim(";").Split(";")
 
         For i = 0 To arrayPaquetes.Length - 1
-
-            arrayPaquetes(i) = arrayPaquetes(i).Replace(vbCr, "").Replace(vbLf, "").Replace(vbTab, "")
             Dim configPaqueteString As String = Strings.Left(arrayPaquetes(i), arrayPaquetes(i).IndexOf("#"))
             Dim componentesPaqueteString As String = Strings.Right(arrayPaquetes(i), arrayPaquetes(i).Length - arrayPaquetes(i).IndexOf("#"))
 
