@@ -19,7 +19,7 @@ Public Class Form1
     Function PreparePaquetes(ByRef paquetesReadedFile As String)
 
         Dim paquetesFinalArray() = {}
-        Dim arrayPaquetes As String() = paquetesReadedFile.Split(";")
+        Dim arrayPaquetes As String() = paquetesReadedFile.Trim(";").Split(";")
 
         For i = 0 To arrayPaquetes.Length - 1
 
